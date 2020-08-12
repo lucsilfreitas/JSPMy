@@ -25,19 +25,6 @@
 
 </form>
 
-  <h5>JTSL</h5>
-  
-  <c:out value="${'bem vindo ao JSTL'}"/><br/>
-  
-  	 <c:set var="numero" value="${100/2}"/>
-  	 
-  	 <c:forEach var="n" begin="1" end="${numero}">
-  	 	Item: ${n}
-  	 	<br>
-  	 </c:forEach>
-  	 
-
-  
   
 
 

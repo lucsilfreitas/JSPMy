@@ -3,8 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import com.mysql.cj.protocol.Resultset;
+import java.sql.SQLException;
 
 import connection.SingleConnection;
 
@@ -16,16 +15,15 @@ public class DaoLogin {
 		connection = SingleConnection.getConnection();
 	}
 	
-	public boolean validarLogin(String login, String senha) throws Exception{
-		String sql = "select * from usuarios where login = '"+login+"' and senha = '"+senha+"'";
-		PreparedStatement statement = connection.prepareStatement(sql);
-		Resultset resultset = statement.executeQuery();
-		if (resultSet.next()) {
-			return true;
-		}else {
-			return false;
-		}
+	public boolean validarLogin(String login, String senha) throws SQLException {		
+	    String sql = "SELECT * FROM usuarios WHERE login = '" + login + "' AND senha = '" + senha + "'";
+	    try (PreparedStatement statement = connection.prepareStatement(sql);) {
+	        try (ResultSet result = statement.executeQuery()) {
+		    return result.next();
+		}			
+	    }			
 	}
+	
 	
 	
 	
