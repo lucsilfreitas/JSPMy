@@ -16,25 +16,26 @@ public class DaoUsuario {
 		connection = SingleConnection.getConnection();
 	}
 
-	public void salvar(BeansCursoJSP usuario) throws SQLException{
+	public void salvar(BeansCursoJSP usuario){
 		
 		try {
-		String sql = "INSERT INTO usuario (login, senha) values (?, ?)";
-		PreparedStatement insert = connection.prepareStatement(sql);
-		insert.setString(1, usuario.getLogin());
-		insert.setString(2, usuario.getSenha());
-		insert.execute();
-		connection.commit();
-		
-	}catch (Exception e) {
-		e.printStackTrace();
-		try {
-			connection.rollback();
-		}catch (SQLException.e1) {
-			e1.printStackTrace();
-		}
-		
-	}
-	}
+			
+			String sql = "insert into usuario (login, senha) values (?, ?)"; 
+			PreparedStatement insert = connection.prepareStatement(sql);
+			insert.setString(1, usuario.getLogin());
+			insert.setString(2, usuario.getSenha());
+			insert.execute();
+			connection.commit();
+			}catch(Exception e) {
+				e.printStackTrace();
+				try {
+					connection.rollback();
+				} catch (SQLException e1) {
 	
-}
+					e1.printStackTrace();
+				}
+			}
+		}
+			
+	}
+
