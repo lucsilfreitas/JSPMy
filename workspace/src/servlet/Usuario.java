@@ -19,6 +19,7 @@ public class Usuario extends HttpServlet {
        
 	private DaoUsuario daoUsuario = new DaoUsuario();
 	
+	
     public Usuario() {
         super();
  
@@ -26,8 +27,7 @@ public class Usuario extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 
@@ -44,7 +44,7 @@ public class Usuario extends HttpServlet {
 		// direciona para o cadastro do usuario lista
 		
 		try {
-		RequestDispatcher view = request.getRequestDispatcher("cadastrousuario.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/cadastrousuario.jsp");
 		request.setAttribute("usuarios", daoUsuario.listar());
 		view.forward(request, response);
 		
