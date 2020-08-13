@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +41,16 @@ public class Usuario extends HttpServlet {
 		
 		daoUsuario.salvar(usuario);
 		
+		// direciona para o cadastro do usuario lista
+		
+		try {
+		RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+		request.setAttribute("usuarios", daoUsuario.listar());
+		view.forward(request, response);
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
