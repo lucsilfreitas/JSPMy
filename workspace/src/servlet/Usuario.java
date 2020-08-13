@@ -44,7 +44,7 @@ public class Usuario extends HttpServlet {
 		// direciona para o cadastro do usuario lista
 		
 		try {
-		RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("cadastrousuario.jsp");
 		request.setAttribute("usuarios", daoUsuario.listar());
 		view.forward(request, response);
 		
