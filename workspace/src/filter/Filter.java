@@ -33,6 +33,7 @@ public class Filter implements javax.servlet.Filter {
 		
 		}catch (Exception e) {
 			try {
+				e.printStackTrace();
 				connection.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();

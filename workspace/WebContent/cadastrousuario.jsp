@@ -15,13 +15,14 @@
 	<table>
 	<tr>
 	<td>Login:</td>
-	<td><input type="text" id="login" name="login"><br/></td>
+	<td><input type="text" id="login" name="login" value="${user.login}"></td>
 	</tr>
 	
 	<tr>
 	
 	<td>Senha:</td>
-	<td><input type="password" id="senha" name="senha"><br/></td>
+	<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
+	
 	</tr>
 	
 </table>
@@ -33,6 +34,8 @@
 <tr>
 <td><c:out value="${user.login}"></c:out></td>
 <td><c:out value="${user.senha}"></c:out></td>
+<td><a href="salvarUsuario?acao=delete&user=${user.login}">Excluir</a> </td>
+<td><a href="salvarUsuario?acao=editar&user=${user.login}">Editar</a> </td>
 </tr>
 </c:forEach>
 

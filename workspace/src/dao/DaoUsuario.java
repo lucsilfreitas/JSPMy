@@ -58,9 +58,52 @@ public class DaoUsuario {
 			listar.add(beansCursoJsp);
 		}
 		
-		return listar();
+		return listar;
 	}
 	
+	public void delete (String login) {
+		
+		try {
+		String sql = "delete from usuario where login = '" + login +"'";
+		PreparedStatement preparedStatement =  connection.prepareStatement(sql);
+		preparedStatement.execute();
+		connection.commit();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+	}
+	
+	//update do registro
+	
+	public BeansCursoJSP consultar(String login) throws Exception {
+		
+		String sql = "select * from usuario where login='" + login +"'";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
+	
+		if (resultSet.next()) {
+			
+			BeansCursoJSP beansCursoJSP = new BeansCursoJSP();
+			
+			beansCursoJSP.setLogin(resultSet.getString("login"));
+			beansCursoJSP.setSenha(resultSet.getString("senha"));
+			
+			return beansCursoJSP;
+			
+		}
+		
+		return null;
+		
+		
+	}
 	
 			
 	}
