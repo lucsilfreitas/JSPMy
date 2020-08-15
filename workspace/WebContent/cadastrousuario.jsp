@@ -14,6 +14,13 @@
 	
 	<table>
 	<tr>
+	
+		<td>Cógigo:</td>
+	<td><input type="text" id="id" name="id" value="${user.id}"></td>
+	</tr>
+	
+	<tr>	
+	
 	<td>Login:</td>
 	<td><input type="text" id="login" name="login" value="${user.login}"></td>
 	</tr>

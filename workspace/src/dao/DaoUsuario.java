@@ -105,6 +105,27 @@ public class DaoUsuario {
 		
 	}
 	
+	public void atualizar(BeansCursoJSP usuario) {
+		try {
+			String sql = "update usuario set login = ?. senha = ? where id = " + usuario.getId();
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, usuario.getLogin());
+			preparedStatement.setString(2, usuario.getSenha());
+			preparedStatement.execute();
+			connection.commit();
+			}catch(Exception e) {
+				e.printStackTrace();
+				try {
+					connection.rollback();
+				} catch (SQLException e1) {
+
+					e1.printStackTrace();
+				}
+			}
 			
+		}
+		
 	}
+			
+
 

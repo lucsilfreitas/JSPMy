@@ -5,6 +5,8 @@ public class BeansCursoJSP {
 	private String nome;
 	private String ano;
 	private String sexo;
+	
+	private long id;
 	private String login;
 	private String senha;
 	
@@ -16,6 +18,21 @@ public class BeansCursoJSP {
 		}
 	}
 	
+	
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 	public String getLogin() {
 		return login;
 	}
